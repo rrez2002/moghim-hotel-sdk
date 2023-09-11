@@ -1,4 +1,5 @@
-import axios, { AxiosError, AxiosInstance } from "axios";
+import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
+import { AvailResponse } from "./type";
 
 export class Hotel {
   private client: AxiosInstance = axios.create({
@@ -13,11 +14,15 @@ export class Hotel {
 
   info = async (token: string, data: object) => {
     try {
-      const response = await this.client.post("api/3.0/Hotel/Info", data, {
-        headers: {
-          Authorization: `bearer ${token}`,
+      const response: AxiosResponse = await this.client.post(
+        "api/3.0/Hotel/Info",
+        data,
+        {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
         },
-      });
+      );
 
       return response.data;
     } catch (error) {
@@ -28,13 +33,17 @@ export class Hotel {
     }
   };
 
-  avail = async (token: string, data: object) => {
+  avail = async (token: string, data: object): Promise<AvailResponse> => {
     try {
-      const response = await this.client.post("api/3.0/Hotel/Avail", data, {
-        headers: {
-          Authorization: `bearer ${token}`,
+      const response: AxiosResponse<AvailResponse> = await this.client.post(
+        "api/3.0/Hotel/Avail",
+        data,
+        {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
         },
-      });
+      );
 
       return response.data;
     } catch (error) {
@@ -90,10 +99,10 @@ export class Hotel {
   cities = async (token: string) => {
     try {
       const response = await this.client.get("api/3.0/Hotel/Cities", {
-        headers: {
-          Authorization: `bearer ${token}`,
-        },
-      });
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
 
       return response.data;
     } catch (error) {
@@ -107,10 +116,10 @@ export class Hotel {
   getAllCities = async (token: string) => {
     try {
       const response = await this.client.get("api/3.0/Hotel/GetAllCities", {
-        headers: {
-          Authorization: `bearer ${token}`,
-        },
-      });
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
 
       return response.data;
     } catch (error) {
@@ -165,10 +174,10 @@ export class Hotel {
   getAllHotels = async (token: string, data: object) => {
     try {
       const response = await this.client.get("api/3.0/Hotel/GetAllHotels", {
-        headers: {
-          Authorization: `bearer ${token}`,
-        },
-      });
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
 
       return response.data;
     } catch (error) {
