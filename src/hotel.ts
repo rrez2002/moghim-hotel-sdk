@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 import {
+  AvailCacheDataResponse,
   AvailResponse,
   FinalReserveResponse,
   InfoResponse,
@@ -59,9 +60,9 @@ export class Hotel {
     }
   };
 
-  availCacheData = async (token: string, data: object) => {
+  availCacheData = async (token: string, data: object): Promise<AvailCacheDataResponse> => {
     try {
-      const response = await this.client.post(
+      const response: AxiosResponse<AvailCacheDataResponse> = await this.client.post(
         "api/3.0/Hotel/AvailCacheData",
         data,
         {

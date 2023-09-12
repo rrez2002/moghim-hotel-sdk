@@ -71,3 +71,51 @@ export type AvailResponse = {
   data: AvailType[];
   errors: [];
 };
+
+export type AvailCacheDataType = {
+  agencyCode: string;
+  agencyName: string;
+  moghimCode: string;
+  kindName: string;
+  hotelName: string;
+  grade: number;
+  locationInfo: LocationInfoType;
+  rooms: HotelRoomItemType[];
+};
+
+type HotelRoomItemType = {
+  roomIndex: number;
+  roomCode: number;
+  roomName: string;
+  roomCapacity: number;
+  serviceCapacity: number;
+  details: RoomDetailInfotype;
+  serviceInfo: HotelServiceInfoType;
+};
+
+type RoomDetailInfotype = {
+  details: RoomDetailType[];
+};
+
+type RoomDetailType = {
+  date: string | Date;
+  blockIn: boolean;
+  blockOut: boolean;
+  minDays: number;
+  maxDays: number;
+  lunchPrice: number;
+  dinnerPrice: number;
+  roomCount: number;
+  roomPrice: number;
+  netRoomPrice: number;
+  roomPricePercentCommission: number;
+  servicePrice: number;
+  servicePricePercentCommission: number;
+};
+
+export type AvailCacheDataResponse = {
+  requestid: string;
+  issuccess: boolean;
+  data: AvailCacheDataType[];
+  errors: [];
+};
