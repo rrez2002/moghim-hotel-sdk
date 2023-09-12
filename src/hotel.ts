@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
-import { AvailResponse } from "./type";
+import { AvailResponse, FinalReserveResponse, TemporaryReserveResponse } from "./type";
 
 export class Hotel {
   private client: AxiosInstance = axios.create({
@@ -208,17 +208,17 @@ export class Hotel {
     }
   };
 
-  hemporaryReserve = async (token: string, data: object) => {
+  temporaryReserve = async (
+    token: string,
+    data: object,
+  ): Promise<TemporaryReserveResponse> => {
     try {
-      const response = await this.client.post(
-        "api/3.0/Hotel/TemporaryReserve",
-        data,
-        {
+      const response: AxiosResponse<TemporaryReserveResponse> =
+        await this.client.post("api/3.0/Hotel/TemporaryReserve", data, {
           headers: {
             Authorization: `bearer ${token}`,
           },
-        },
-      );
+        });
 
       return response.data;
     } catch (error) {
@@ -229,9 +229,9 @@ export class Hotel {
     }
   };
 
-  finalReserve = async (token: string, data: object) => {
+  finalReserve = async (token: string, data: object): Promise<FinalReserveResponse> => {
     try {
-      const response = await this.client.post(
+      const response: AxiosResponse<FinalReserveResponse> = await this.client.post(
         "api/3.0/Hotel/FinalReserve",
         data,
         {
