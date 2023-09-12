@@ -1,5 +1,9 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
-import { AvailResponse, FinalReserveResponse, TemporaryReserveResponse } from "./type";
+import {
+  AvailResponse,
+  FinalReserveResponse,
+  TemporaryReserveResponse,
+} from "./type";
 
 export class Hotel {
   private client: AxiosInstance = axios.create({
@@ -99,10 +103,10 @@ export class Hotel {
   cities = async (token: string) => {
     try {
       const response = await this.client.get("api/3.0/Hotel/Cities", {
-          headers: {
-            Authorization: `bearer ${token}`,
-          },
-        });
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      });
 
       return response.data;
     } catch (error) {
@@ -116,10 +120,10 @@ export class Hotel {
   getAllCities = async (token: string) => {
     try {
       const response = await this.client.get("api/3.0/Hotel/GetAllCities", {
-          headers: {
-            Authorization: `bearer ${token}`,
-          },
-        });
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      });
 
       return response.data;
     } catch (error) {
@@ -174,10 +178,10 @@ export class Hotel {
   getAllHotels = async (token: string, data: object) => {
     try {
       const response = await this.client.get("api/3.0/Hotel/GetAllHotels", {
-          headers: {
-            Authorization: `bearer ${token}`,
-          },
-        });
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      });
 
       return response.data;
     } catch (error) {
@@ -229,17 +233,17 @@ export class Hotel {
     }
   };
 
-  finalReserve = async (token: string, data: object): Promise<FinalReserveResponse> => {
+  finalReserve = async (
+    token: string,
+    data: object,
+  ): Promise<FinalReserveResponse> => {
     try {
-      const response: AxiosResponse<FinalReserveResponse> = await this.client.post(
-        "api/3.0/Hotel/FinalReserve",
-        data,
-        {
+      const response: AxiosResponse<FinalReserveResponse> =
+        await this.client.post("api/3.0/Hotel/FinalReserve", data, {
           headers: {
             Authorization: `bearer ${token}`,
           },
-        },
-      );
+        });
 
       return response.data;
     } catch (error) {

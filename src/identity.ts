@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import md5 from "md5";
+import { LoginResponse } from "./type";
 
 export class Identity {
   private static service: "MoghimHotel";
@@ -14,10 +15,7 @@ export class Identity {
 
   static login = async (username: string, password: string) => {
     try {
-      const response: AxiosResponse<{
-        issuccess: boolean;
-        data: { token: string };
-      }> = await this.client.post(
+      const response: AxiosResponse<LoginResponse> = await this.client.post(
         "https://identity.moghim24.services/api/Authentication/login",
         {
           service: this.service,
