@@ -119,3 +119,12 @@ export type AvailCacheDataResponse = {
   data: AvailCacheDataType[];
   errors: [];
 };
+
+type AvailCacheDataWithHotelCode = AvailCacheDataType;
+
+export type AvailCacheDataWithHotelCodeResponse = {
+  requestid: string;
+  issuccess: boolean;
+  data: AvailCacheDataWithHotelCode[];
+  errors: [];
+};

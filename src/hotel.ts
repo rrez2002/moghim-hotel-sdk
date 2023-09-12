@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 import {
   AgenciesHotelsInfoResponse,
   AvailCacheDataResponse,
+  AvailCacheDataWithHotelCodeResponse,
   AvailResponse,
   CustomerInformationResponse,
   FinalReserveResponse,
@@ -83,17 +84,21 @@ export class Hotel {
     }
   };
 
-  availCacheDataWithHotelCode = async (token: string, data: object) => {
+  availCacheDataWithHotelCode = async (
+    token: string,
+    data: object,
+  ): Promise<AvailCacheDataWithHotelCodeResponse> => {
     try {
-      const response = await this.client.post(
-        "api/3.0/Hotel/AvailCacheDataWithHotelCode",
-        data,
-        {
-          headers: {
-            Authorization: `bearer ${token}`,
+      const response: AxiosResponse<AvailCacheDataWithHotelCodeResponse> =
+        await this.client.post(
+          "api/3.0/Hotel/AvailCacheDataWithHotelCode",
+          data,
+          {
+            headers: {
+              Authorization: `bearer ${token}`,
+            },
           },
-        },
-      );
+        );
 
       return response.data;
     } catch (error) {
