@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 import {
   AvailResponse,
   FinalReserveResponse,
+  InfoResponse,
   TemporaryReserveResponse,
 } from "./type";
 
@@ -16,9 +17,9 @@ export class Hotel {
   });
   constructor() {}
 
-  info = async (token: string, data: object) => {
+  info = async (token: string, data: object): Promise<InfoResponse> => {
     try {
-      const response: AxiosResponse = await this.client.post(
+      const response: AxiosResponse<InfoResponse> = await this.client.post(
         "api/3.0/Hotel/Info",
         data,
         {
