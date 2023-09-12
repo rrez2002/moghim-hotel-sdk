@@ -3,6 +3,7 @@ import {
   AgenciesHotelsInfoResponse,
   AvailCacheDataResponse,
   AvailResponse,
+  CustomerInformationResponse,
   FinalReserveResponse,
   InfoResponse,
   TemporaryReserveResponse,
@@ -137,16 +138,16 @@ export class Hotel {
     }
   };
 
-  customerInformation = async (token: string) => {
+  customerInformation = async (
+    token: string,
+  ): Promise<CustomerInformationResponse> => {
     try {
-      const response = await this.client.get(
-        "api/3.0/Hotel/CustomerInformation",
-        {
+      const response: AxiosResponse<CustomerInformationResponse> =
+        await this.client.get("api/3.0/Hotel/CustomerInformation", {
           headers: {
             Authorization: `bearer ${token}`,
           },
-        },
-      );
+        });
 
       return response.data;
     } catch (error) {
