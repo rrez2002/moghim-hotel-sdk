@@ -1,4 +1,4 @@
-export type InfoResponse = {
+type InfoType = {
   city: string;
   hotelFaName: string;
   moghimCode: string;
@@ -14,7 +14,16 @@ export type InfoResponse = {
   lat: number;
   lng: number;
   rooms: RoomData[];
+}
+
+export type InfoResponse = {
+  requestid: string;
+  issuccess: boolean;
+  data: InfoType[];
+  errors: [];
 };
+
+
 
 type RoomData = {
   title: string;
