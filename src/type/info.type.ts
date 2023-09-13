@@ -14,7 +14,7 @@ type InfoType = {
   lat: number;
   lng: number;
   rooms: RoomData[];
-}
+};
 
 export type InfoResponse = {
   requestid: string;
@@ -23,9 +23,15 @@ export type InfoResponse = {
   errors: [];
 };
 
-
-
 type RoomData = {
   title: string;
   roomCode: number;
+};
+
+export type InfoDto = {
+  moghimCode?: string[];
+  cityiataCode?: string[];
+  country?: string[];
+  grade?: string[];
+  agencyCode?: string[];
 };

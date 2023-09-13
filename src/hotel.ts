@@ -1,10 +1,13 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 import {
   AgenciesHotelsInfoResponse,
+  AvailCacheDataDto,
   AvailCacheDataResponse,
+  AvailDto,
   AvailResponse,
   CustomerInformationResponse,
   FinalReserveResponse,
+  InfoDto,
   InfoResponse,
   TemporaryReserveResponse,
 } from "./type";
@@ -20,7 +23,7 @@ export class Hotel {
   });
   constructor() {}
 
-  info = async (token: string, data: object): Promise<InfoResponse> => {
+  info = async (token: string, data: InfoDto): Promise<InfoResponse> => {
     try {
       const response: AxiosResponse<InfoResponse> = await this.client.post(
         "api/3.0/Hotel/Info",
@@ -41,7 +44,7 @@ export class Hotel {
     }
   };
 
-  avail = async (token: string, data: object): Promise<AvailResponse> => {
+  avail = async (token: string, data: AvailDto): Promise<AvailResponse> => {
     try {
       const response: AxiosResponse<AvailResponse> = await this.client.post(
         "api/3.0/Hotel/Avail",
@@ -64,7 +67,7 @@ export class Hotel {
 
   availCacheData = async (
     token: string,
-    data: object,
+    data: AvailCacheDataDto,
   ): Promise<AvailCacheDataResponse> => {
     try {
       const response: AxiosResponse<AvailCacheDataResponse> =
@@ -85,7 +88,7 @@ export class Hotel {
 
   availCacheDataWithHotelCode = async (
     token: string,
-    data: object,
+    data: AvailCacheDataDto,
   ): Promise<AvailCacheDataResponse> => {
     try {
       const response: AxiosResponse<AvailCacheDataResponse> =

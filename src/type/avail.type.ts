@@ -119,3 +119,26 @@ export type AvailCacheDataResponse = {
   data: AvailCacheDataType[];
   errors: [];
 };
+
+type DateFormat = "shamsi" | "shamsi";
+
+export type AvailDto = {
+  agencyCode?: string[];
+  moghimCode?: string[];
+  country?: string[];
+  city?: string[];
+  roomCapacity?: number[];
+  dateFormat: DateFormat;
+  checkInDate: string;
+  checkOutDate: string;
+  extraService?: number[];
+  moreCaps?: boolean;
+};
+
+export type AvailCacheDataDto = {
+  startDate: string;
+  endDate: string;
+  cityCode?: string;
+  hotelCode?: string;
+  agencyCode?: string;
+};
