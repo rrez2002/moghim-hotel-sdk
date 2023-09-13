@@ -120,7 +120,7 @@ export type AvailCacheDataResponse = {
   errors: [];
 };
 
-type DateFormat = "shamsi" | "shamsi";
+type DateFormat = "shamsi" | "miladi";
 
 export type AvailDto = {
   agencyCode?: string[];
