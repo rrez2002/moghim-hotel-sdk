@@ -6,9 +6,11 @@ import {
   AvailDto,
   AvailResponse,
   CustomerInformationResponse,
+  FinalReserveDto,
   FinalReserveResponse,
   InfoDto,
   InfoResponse,
+  TemporaryReserveDto,
   TemporaryReserveResponse,
 } from "./type";
 
@@ -225,7 +227,7 @@ export class Hotel {
 
   temporaryReserve = async (
     token: string,
-    data: object,
+    data: TemporaryReserveDto,
   ): Promise<TemporaryReserveResponse> => {
     try {
       const response: AxiosResponse<TemporaryReserveResponse> =
@@ -246,7 +248,7 @@ export class Hotel {
 
   finalReserve = async (
     token: string,
-    data: object,
+    data: FinalReserveDto,
   ): Promise<FinalReserveResponse> => {
     try {
       const response: AxiosResponse<FinalReserveResponse> =
