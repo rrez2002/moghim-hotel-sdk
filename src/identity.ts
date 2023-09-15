@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import md5 from "md5";
-import { LoginResponse } from "./type";
+import { LoginResponse, PingResponse } from "./type";
 
 export class Identity {
   private service: "MoghimHotel";
@@ -39,9 +39,9 @@ export class Identity {
     }
   };
 
-  ping = async (token: string) => {
+  ping = async (token: string): Promise<PingResponse> => {
     try {
-      const response = await this.client.get(
+      const response: AxiosResponse<PingResponse> = await this.client.get(
         "https://identity.moghim24.services/api/ping",
         {
           headers: {

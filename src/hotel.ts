@@ -3,6 +3,7 @@ import {
   AgenciesHotelsInfoResponse,
   AvailCacheDataDto,
   AvailCacheDataResponse,
+  AvailCacheDataWithHotelCodeDto,
   AvailDto,
   AvailResponse,
   CustomerInformationResponse,
@@ -90,7 +91,7 @@ export class Hotel {
 
   availCacheDataWithHotelCode = async (
     token: string,
-    data: AvailCacheDataDto,
+    data: AvailCacheDataWithHotelCodeDto,
   ): Promise<AvailCacheDataResponse> => {
     try {
       const response: AxiosResponse<AvailCacheDataResponse> =

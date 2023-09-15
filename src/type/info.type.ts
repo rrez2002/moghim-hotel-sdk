@@ -32,6 +32,6 @@ export type InfoDto = {
   moghimCode?: string[];
   cityiataCode?: string[];
   country?: string[];
-  grade?: string[];
+  grade?: number[];
   agencyCode?: string[];
 };
