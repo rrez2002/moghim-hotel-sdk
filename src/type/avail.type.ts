@@ -66,7 +66,6 @@ export type AvailType = {
 
 export type AvailResponse = {
   requestid: string;
-  total: number;
   issuccess: boolean;
   data: AvailType[];
   errors: [];
