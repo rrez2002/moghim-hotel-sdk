@@ -146,6 +146,6 @@ export type AvailCacheDataWithHotelCodeDto = {
   startDate: string;
   endDate: string;
   cityCode?: string;
-  hotelCode?: string;
+  hotelCode: string;
   agencyCode?: string;
 };
