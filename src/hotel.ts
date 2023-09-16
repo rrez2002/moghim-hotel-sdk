@@ -13,6 +13,8 @@ import {
   InfoResponse,
   TemporaryReserveDto,
   TemporaryReserveResponse,
+  hotelImageDto,
+  hotelImageResponse,
 } from "./type";
 
 export class Hotel {
@@ -168,17 +170,17 @@ export class Hotel {
     }
   };
 
-  hotelImages = async (token: string, data: object) => {
+  hotelImages = async (
+    token: string,
+    data: hotelImageDto,
+  ): Promise<hotelImageResponse> => {
     try {
-      const response = await this.client.post(
-        "api/3.0/Hotel/HotelImages",
-        data,
-        {
+      const response: AxiosResponse<hotelImageResponse> =
+        await this.client.post("api/3.0/Hotel/HotelImages", data, {
           headers: {
             Authorization: `bearer ${token}`,
           },
-        },
-      );
+        });
 
       return response.data;
     } catch (error) {
