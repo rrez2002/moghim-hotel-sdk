@@ -28,7 +28,7 @@ export class Hotel {
   });
   constructor() {}
 
-  info = async (token: string, data: InfoDto): Promise<InfoResponse> => {
+  info = async (data: InfoDto, token: string): Promise<InfoResponse> => {
     try {
       const response: AxiosResponse<InfoResponse> = await this.client.post(
         "api/3.0/Hotel/Info",
@@ -49,7 +49,7 @@ export class Hotel {
     }
   };
 
-  avail = async (token: string, data: AvailDto): Promise<AvailResponse> => {
+  avail = async (data: AvailDto, token: string): Promise<AvailResponse> => {
     try {
       const response: AxiosResponse<AvailResponse> = await this.client.post(
         "api/3.0/Hotel/Avail",
@@ -71,8 +71,8 @@ export class Hotel {
   };
 
   availCacheData = async (
-    token: string,
     data: AvailCacheDataDto,
+    token: string,
   ): Promise<AvailCacheDataResponse> => {
     try {
       const response: AxiosResponse<AvailCacheDataResponse> =
@@ -92,8 +92,8 @@ export class Hotel {
   };
 
   availCacheDataWithHotelCode = async (
-    token: string,
     data: AvailCacheDataWithHotelCodeDto,
+    token: string,
   ): Promise<AvailCacheDataResponse> => {
     try {
       const response: AxiosResponse<AvailCacheDataResponse> =
@@ -171,8 +171,8 @@ export class Hotel {
   };
 
   hotelImages = async (
-    token: string,
     data: hotelImageDto,
+    token: string,
   ): Promise<hotelImageResponse> => {
     try {
       const response: AxiosResponse<hotelImageResponse> =
@@ -191,7 +191,7 @@ export class Hotel {
     }
   };
 
-  getAllHotels = async (token: string, data: object) => {
+  getAllHotels = async (token: string) => {
     try {
       const response = await this.client.get("api/3.0/Hotel/GetAllHotels", {
         headers: {
@@ -229,8 +229,8 @@ export class Hotel {
   };
 
   temporaryReserve = async (
-    token: string,
     data: TemporaryReserveDto,
+    token: string,
   ): Promise<TemporaryReserveResponse> => {
     try {
       const response: AxiosResponse<TemporaryReserveResponse> =
@@ -250,8 +250,8 @@ export class Hotel {
   };
 
   finalReserve = async (
-    token: string,
     data: FinalReserveDto,
+    token: string,
   ): Promise<FinalReserveResponse> => {
     try {
       const response: AxiosResponse<FinalReserveResponse> =
