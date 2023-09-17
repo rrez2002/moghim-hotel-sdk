@@ -69,8 +69,21 @@ type TransferType = {
   flightTime: string;
 };
 
+/**
+ * male mr and female mrs
+ */
 type Gender = "mr" | "mrs";
+
+/**
+ * adult adl
+ * child chd
+ * infant inf
+ */
 type Kind = "adl" | "chd" | "inf";
+
+/**
+ * Iranian passengers 0 and for foreign passengers 1
+ */
 type Nationality = 0 | 1;
 
 type PassengerType = {
