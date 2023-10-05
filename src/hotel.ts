@@ -16,6 +16,8 @@ import {
   TemporaryReserveResponse,
   hotelImageDto,
   hotelImageResponse,
+  CitiesResponse,
+  GetAllCitiesResponse,
 } from "./type";
 
 export class Hotel {
@@ -117,13 +119,16 @@ export class Hotel {
     }
   };
 
-  cities = async (token: string) => {
+  cities = async (token: string): Promise<CitiesResponse> => {
     try {
-      const response = await this.client.get("api/3.0/Hotel/Cities", {
-        headers: {
-          Authorization: `bearer ${token}`,
+      const response: AxiosResponse<CitiesResponse> = await this.client.get(
+        "api/3.0/Hotel/Cities",
+        {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
         },
-      });
+      );
 
       return response.data;
     } catch (error) {
@@ -134,13 +139,14 @@ export class Hotel {
     }
   };
 
-  getAllCities = async (token: string) => {
+  getAllCities = async (token: string): Promise<GetAllCitiesResponse> => {
     try {
-      const response = await this.client.get("api/3.0/Hotel/GetAllCities", {
-        headers: {
-          Authorization: `bearer ${token}`,
-        },
-      });
+      const response: AxiosResponse<GetAllCitiesResponse> =
+        await this.client.get("api/3.0/Hotel/GetAllCities", {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
 
       return response.data;
     } catch (error) {
