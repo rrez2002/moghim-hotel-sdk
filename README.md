@@ -23,22 +23,25 @@ $ npm install moghim-hotel-sdk
 ```typescript
     import * as MoghimHotel from "moghim-hotel-sdk";
     const hotel = new MoghimHotel.Hotel();
-    const customerInformation = await hotel.customerInformation(token);
+    hotel.setToken(token);
+    const customerInformation = await hotel.customerInformation();
     console.log(customerInformation.data.remainCredit);
 ```
 ## Info
 ```typescript
+    hotel.setToken(token);
     const info = await hotel.info({
         cityiataCode: ["MHD"],
         country: ["Iran"],
         grade: [2, 4],
         agencyCode: ["100"],
-    },token);
+    });
     console.log(info.data);
 ```
 
 ## Avail
 ```typescript
+    hotel.setToken(token);
     const avail = await hotel.avail({
         moghimCode: ["SHAYAN", "DARVISHI"],
         country: ["Iran"],
@@ -49,29 +52,29 @@ $ npm install moghim-hotel-sdk
         checkOutDate: "1402/06/30",
         extraService: [0, 1, 2],
         moreCaps: false,
-    }, token);
+    });
   console.log(avail.data);
 ```
 ## AvailCacheDatail
 ```typescript 
+    hotel.setToken(token);
     const availCacheData = await hotel.availCacheData({
         cityCode: "MHD",
         startDate: "1402/06/28",
         endDate: "1402/06/30",
-    },token);
+    });
     console.log(availCacheData.data);
 ```
 ## AvailCacheDataWithHotelCode
 ```typescript 
     
+  hotel.setToken(token);
   const availCacheDataWithHotelCode = await hotel.availCacheDataWithHotelCode(
     {
       startDate: "1402/06/19",
       endDate: "2023/09/16",
       cityCode: "KIH",
       hotelCode: "ARAMESH",
-    }, 
-    token
-  );
+    });
   console.log(availCacheDataWithHotelCode.data);
 ```
