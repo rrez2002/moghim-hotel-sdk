@@ -5,6 +5,7 @@ import { LoginResponse, PingResponse } from "./type";
 export class Identity {
   private service: "MoghimHotel";
   private client = axios.create({
+    baseURL: "https://identity.moghim24.services",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -26,7 +27,7 @@ export class Identity {
   login = async () => {
     try {
       const response: AxiosResponse<LoginResponse> = await this.client.post(
-        "https://identity.moghim24.services/api/Authentication/login",
+        "api/Authentication/login",
         {
           service: this.service,
           username: this.username,
@@ -42,7 +43,7 @@ export class Identity {
   ping = async (token: string): Promise<PingResponse> => {
     try {
       const response: AxiosResponse<PingResponse> = await this.client.get(
-        "https://identity.moghim24.services/api/ping",
+        "api/ping",
         {
           headers: {
             Authorization: `bearer ${token}`,
