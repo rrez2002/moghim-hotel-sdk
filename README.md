@@ -1,5 +1,5 @@
 # MoghimHotel
-
+### [Moghim Hotel Document](https://apidoc.moghim24.services/doc/MoghimHotel)
 ## Install
 
 ```bash
@@ -9,8 +9,8 @@ $ npm install moghim-hotel-sdk
 ## How to use
 ## Login
 ```typescript
-    import * as MoghimHotel from "moghim-hotel-sdk";
-    const auth = new MoghimHotel.Identity("username", "password");
+    import {Identity} from "moghim-hotel-sdk";
+    const auth = new Identity("username", "password");
     let token = await auth.login();
     console.log(token);
 ```
@@ -21,8 +21,8 @@ $ npm install moghim-hotel-sdk
 ```
 ## CustomerInformation
 ```typescript
-    import * as MoghimHotel from "moghim-hotel-sdk";
-    const hotel = new MoghimHotel.Hotel();
+    import {Hotel} from "moghim-hotel-sdk";
+    const hotel = new Hotel();
     hotel.setToken(token);
     const customerInformation = await hotel.customerInformation();
     console.log(customerInformation.data.remainCredit);
@@ -53,7 +53,7 @@ $ npm install moghim-hotel-sdk
         extraService: [0, 1, 2],
         moreCaps: false,
     });
-  console.log(avail.data);
+    console.log(avail.data);
 ```
 ## AvailCacheDatail
 ```typescript 
@@ -76,5 +76,5 @@ $ npm install moghim-hotel-sdk
       cityCode: "KIH",
       hotelCode: "ARAMESH",
     });
-  console.log(availCacheDataWithHotelCode.data);
+    console.log(availCacheDataWithHotelCode.data);
 ```
