@@ -53,14 +53,13 @@ type SelectableServices = {
 type TemporaryReserveData = {
   index: number;
   roomId: string;
-  requestedAvailData: null;
   passengerCount: number;
   uniqueRequestNumber: number;
   serviceData: SelectableServices;
 };
 
 export type TemporaryReserveDto = {
-  dara: TemporaryReserveData;
+  data: TemporaryReserveData[];
   reserveIfChange: boolean;
 };
 
@@ -74,6 +73,11 @@ type TransferType = {
  */
 type Gender = "mr" | "mrs";
 
+export enum GenderEnum {
+  male = "mr",
+  female = "mrs",
+}
+
 /**
  * adult adl
  * child chd
@@ -81,10 +85,21 @@ type Gender = "mr" | "mrs";
  */
 type Kind = "adl" | "chd" | "inf";
 
+export enum KingEmum {
+  adult = "adl",
+  child = "chd",
+  infant = "inf",
+}
+
 /**
  * Iranian passengers 0 and for foreign passengers 1
  */
 type Nationality = 0 | 1;
+
+export enum NationalityEnum {
+  iranianPassenger,
+  foreignPassenger,
+}
 
 type PassengerType = {
   firstName: string;
@@ -100,7 +115,6 @@ type PassengerType = {
   birthDate?: string;
   passportExpireDate?: string;
   nationality: Nationality;
-  ordinal: number;
   bed: boolean;
 };
 
