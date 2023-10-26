@@ -3,11 +3,10 @@ import type { Config } from "@jest/types";
 const config: Config.InitialOptions = {
   verbose: true,
   collectCoverage: true,
-  // coverageDirectory: "coverage",
   coverageProvider: "v8",
-  transform: {
-    "^./test/+\\.test.ts?$": "ts-jest",
-  },
+  preset: "ts-jest",
+  testEnvironment: "node",
+  testRegex: "test/.*.test.ts$",
   setupFiles: ["dotenv/config"],
 };
 export default config;
